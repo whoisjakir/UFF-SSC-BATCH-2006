@@ -4,298 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership Form - UNITY FOR FUTURE, SSC BATCH 2006</title>
-    <style>
-        :root {
-            --primary-color: #002060;
-            --border-color: #000;
-        }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .form-container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: #fff;
-            border: 1px solid #ccc;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .header-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .title-area {
-            text-align: center;
-        }
-        .title-area h1 {
-            color: var(--primary-color);
-            margin: 5px 0;
-            font-size: 28px;
-        }
-        .form-title-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .form-title {
-            background-color: #000;
-            color: #fff;
-            padding: 6px 24px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        .meta-table {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .digit-box {
-            border: 1px solid #000;
-            padding: 3px 6px;
-            margin-right: -1px;
-            display: inline-block;
-            font-family: monospace;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: 150px 20px 1fr;
-            gap: 12px 0;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .form-grid.sub-row {
-            grid-template-columns: 1fr;
-        }
-        .inline-group {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            width: 100%;
-        }
-        .inline-group label {
-            white-space: nowrap;
-        }
-        input[type="text"], input[type="email"], input[type="date"], input[type="number"], select {
-            width: 100%;
-            border: none;
-            border-bottom: 1px dotted #000;
-            padding: 4px;
-            background: transparent;
-            font-size: 15px;
-            outline: none;
-        }
-        input[type="text"]:focus {
-            border-bottom-style: solid;
-            background-color: #fafafa;
-        }
-        .section-divider {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            font-weight: bold;
-            padding: 8px;
-            margin: 30px 0 15px 0;
-        }
-        .photo-upload-container {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .photo-box-wrapper {
-            position: relative;
-            width: 90px;
-            height: 110px;
-            border: 1px solid #000;
-            text-align: center;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        .photo-box-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-        .photo-box-wrapper span {
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 5px;
-            color: #666;
-        }
-        .photo-box-wrapper input[type="file"] {
-            position: absolute;
-            top: 0; left: 0; opacity: 0;
-            width: 100%; height: 100%;
-            cursor: pointer;
-        }
-        .nominee-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-        .nominee-table th, .nominee-table td {
-            border: 1px solid #000;
-            padding: 6px;
-            text-align: center;
-        }
-        .nominee-table th { background-color: #f2f2f2; }
-        .btn {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 3px;
-        }
-        .btn-danger { background-color: #dc3545; padding: 4px 8px; font-size: 12px;}
-        .declaration-box {
-            text-align: justify;
-            line-height: 1.8;
-            margin: 25px 0 60px 0;
-        }
-        .signature-table {
-            width: 100%;
-        }
-        .signature-table td {
-            width: 33.33%;
-            text-align: center;
-            font-size: 14px;
-        }
-        .sig-line {
-            border-top: 1px solid #000;
-            width: 80%;
-            margin: 40px auto 5px auto;
-        }
-        
-        /* Form Action Panel styling */
-        .actions-panel {
-            max-width: 850px;
-            margin: 20px auto 0 auto;
-            text-align: right;
-        }
-        .btn-submit {
-            background-color: var(--primary-color);
-            padding: 12px 30px;
-            font-size: 16px;
-        }
-
-        /* PRINT STYLES - Crucial for clean hardcopies */
-        @media print {
-            body { background: #fff; padding: 0; }
-            .form-container { border: none; box-shadow: none; padding: 0; }
-            .btn, .actions-panel, .btn-danger { display: none !important; }
-            .nominee-table th:last-child, .nominee-table td:last-child { 
-                display: none; /* Hides action columns during print */
-            }
-            input::placeholder { color: transparent; }
-        }
-    </style>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <form id="associationForm" onsubmit="return validateForm(event)">
     <div class="form-container">
-        <table class="header-table">
-            <tr>
-                <td style="width:15%">
-                    <div style="width: 100px; height: 100px; border-radius: 50%; border: 1px dashed #ccc; text-align: center; line-height: 70px; font-size: 12px;">
-						<img style="width:100%; height:100%; border-radius:50%;" alt="Logo" src="https://raw.githubusercontent.com/whoisjakir/UFF-SSC-BATCH-2006/refs/heads/gh-pages/image/logo.png" />
-					</div>
-                </td>
-                <td class="title-area">
-                    <div style="font-size: 12px;">বিসমিল্লাহির রাহমানির রাহিম</div>
-                    <h1>UNITY FOR FUTURE, SSC BATCH 2006</h1>
-                    <p style="margin:2px 0; font-style:italic;">( সৌহার্দ্য-সম্প্রীতি-সমৃদ্ধি )</p>
-                </td>
-                <td style="width:15%; text-align:right;">
-                    <div class="photo-box-wrapper">
-                        <span>আবেদনকারীর ছবি</span>
-                        <img id="applicantPreview">
-                        <input type="file" accept="image/*" onchange="previewImage(this, 'applicantPreview')">
-                    </div>
-                </td>
-            </tr>
-        </table>
+        
+        <div class="header-wrapper">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 1px dashed #ccc; text-align: center; line-height: 100px; font-size: 12px; margin: 0 auto;">
+				<img style="width:100%; height:100%; border-radius:50%;" alt="Logo" src="Image/logo.png" />
+			</div>
+            <div class="title-area">
+                <div style="font-size: 12px;">বিসমিল্লাহির রাহমানির রাহিম</div>
+                <h1>UNITY FOR FUTURE, SSC BATCH 2006</h1>
+                <p style="margin:2px 0; font-style:italic;">( সৌহার্দ্য-সম্প্রীতি-সমৃদ্ধি )</p>
+            </div>
+            <div class="photo-box-wrapper" style="margin: 0 auto;">
+                <span>আবেদনকারীর ছবি</span>
+                <img id="applicantPreview">
+                <input type="file" accept="image/*" onchange="previewImage(this, 'applicantPreview')">
+            </div>
+        </div>
 
         <div class="form-title-container"><div class="form-title">সদস্য ফরম</div></div>
 
-        <table class="meta-table">
-            <tr>
-                <td>
-                    সদস্য নং: 
-                    <span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">১</span><span class="digit-box">৭</span>
-                </td>
-                <td style="text-align: right;">
-                    তারিখ: <input type="date" value="2024-06-15" style="width:130px; text-align:center;">
-                </td>
-            </tr>
-        </table>
-
-        <div class="form-grid">
-            <div>১। নাম (বাংলায়)</div><div>:</div><div><input type="text" value="মোহাম্মদ জালাল আমিন"></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;(ইংরেজিতে)</div><div>:</div><div><input type="text" value="MOHAMMAD JALAL AMIN" style="text-transform: uppercase;"></div>
-            <div>২। ব্যবসা/ প্রতিষ্ঠানের নাম</div><div>:</div><div><input type="text" value="ফেমাস ট্রেড"></div>
-            <div>৩। পিতার নাম</div><div>:</div><div><input type="text" value="মোহাম্মদ রুহুল আমিন"></div>
-            <div>৪। মাতার নাম</div><div>:</div><div><input type="text" value="রেহানা বেগম"></div>
-            <div>৫। স্বামী/ স্ত্রীর নাম</div><div>:</div><div><input type="text" value="প্রযোজ্য নহে"></div>
-            <div>৫। বর্তমান ঠিকানা</div><div>:</div><div><input type="text" value="বাড়ি নং- ৪৭, রাস্তা নং- ২এ, ব্লক- ডি, সেকশন- ১২, পল্লবী, মিরপুর, ঢাকা- ১২১৬"></div>
-            
-            <div>৬। স্থায়ী ঠিকানা</div><div>:</div>
-            <div class="inline-group">
-                <label>গ্রাম:</label><input type="text" value="পাশাপুর">
-                <label>ডাকঘর:</label><input type="text" value="মুদাফরগঞ্জ">
+        <div class="meta-row">
+            <div>
+                সদস্য নং: 
+                <span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">০</span><span class="digit-box">১</span><span class="digit-box">৭</span>
             </div>
-            <div></div><div></div>
-            <div class="inline-group">
-                <label>থানা:</label><input type="text" value="লাকসাম">
-                <label>জেলা:</label><input type="text" value="কুমিল্লা">
+            <div>
+                তারিখ: <input type="date" value="2024-06-15" style="width:140px; text-align:center; display:inline-block;">
             </div>
+        </div>
 
-            <div>৭। মোবাইল</div><div>:</div>
-            <div class="inline-group">
-                <input type="text" value="০১৭৯২৮৭৫৮৯০">
-                <label style="white-space:nowrap;">স্বামী/ স্ত্রীর মোবাইল:</label><input type="text" value="প্রযোজ্য নহে">
+        <div class="form-row">
+            <div class="form-label">১। নাম (বাংলায়)</div>
+            <div class="form-input-field"><span class="field-sep">:</span><input type="text" value="মোহাম্মদ জালাল আমিন"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label" style="font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;(ইংরেজিতে)</div>
+            <div class="form-input-field"><span class="field-sep">:</span><input type="text" value="MOHAMMAD JALAL AMIN" style="text-transform: uppercase;"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">২। ব্যবসা/ প্রতিষ্ঠানের নাম</div>
+            <div class="form-input-field"><span class="field-sep">:</span><input type="text" value="ফেমাস ট্রেড"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">৩। পিতার নাম</div>
+            <div class="form-input-field"><span class="field-sep">:</span><input type="text" value="মোহাম্মদ রুহুল আমিন"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">৪। মাতার নাম</div>
+            <div class="form-input-field"><span class="field-sep">:</span><input type="text" value="রেহানা বেগম"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">৫। স্বামী/ স্ত্রীর নাম</div>
+            <div class="form-input-field"><span class="field-sep">:</span><input type="text" value="প্রযোজ্য নহে"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">৫। বর্তমান ঠিকানা</div>
+            <div class="form-input-field"><span class="field-sep">:</span><input type="text" value="বাড়ি নং- ৪৭, রাস্তা নং- ২এ, ব্লক- ডি, সেকশন- ১২, পল্লবী, মিরপুর, ঢাকা- ১২১৬"></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-label">৬। স্থায়ী ঠিকানা</div>
+            <div class="form-input-field">
+                <span class="field-sep">:</span>
+                <div class="inline-flex-group">
+                    <label>গ্রাম:</label><input type="text" value="পাশাপুর">
+                    <label>ডাকঘর:</label><input type="text" value="মুদাফরগঞ্জ">
+                </div>
             </div>
-
-            <div>৮। জন্ম তারিখ</div><div>:</div>
-            <div class="inline-group">
-                <input type="text" value="০৩/০২/২০০২">
-                <label>ই-মেইল:</label><input type="email" value="m.jalalamin@gmail.com">
+        </div>
+        <div class="form-row">
+            <div class="form-label"></div>
+            <div class="form-input-field">
+                <span class="field-sep" style="visibility:hidden;">:</span>
+                <div class="inline-flex-group">
+                    <label>থানা:</label><input type="text" value="লাকসাম">
+                    <label>জেলা:</label><input type="text" value="কুমিল্লা">
+                </div>
             </div>
+        </div>
 
-            <div>৯। জাতীয়তা</div><div>:</div>
-            <div class="inline-group">
-                <input type="text" value="বাংলাদেশী" style="width:25%">
-                <label>পেশা:</label><input type="text" value="গ্রাফিক ডিজাইনার" style="width:35%">
-                <label>ধর্ম:</label><input type="text" value="ইসলাম" style="width:20%">
+        <div class="form-row">
+            <div class="form-label">৭। মোবাইল</div>
+            <div class="form-input-field">
+                <span class="field-sep">:</span>
+                <div class="inline-flex-group">
+                    <input type="text" value="০১৭৯২৮৭৫৮৯০" style="flex:1.5;">
+                    <label>স্বামী/ স্ত্রীর মোবাইল:</label><input type="text" value="প্রযোজ্য নহে">
+                </div>
             </div>
+        </div>
 
-            <div>১০। জাতীয় পরিচয় পত্র নং</div><div>:</div>
-            <div class="inline-group">
-                <input type="text" value="৭৩৫৮১৮৫৭৫২">
-                <label>পাসপোর্ট নং:</label><input type="text">
+        <div class="form-row">
+            <div class="form-label">৮। জন্ম তারিখ</div>
+            <div class="form-input-field">
+                <span class="field-sep">:</span>
+                <div class="inline-flex-group">
+                    <input type="text" value="০৩/০২/২০০২">
+                    <label>ই-মেইল:</label><input type="email" value="m.jalalamin@gmail.com" style="flex:1.5;">
+                </div>
             </div>
+        </div>
 
-            <div>১১। শিক্ষাগত যোগ্যতা</div><div>:</div>
-            <div class="inline-group">
-                <input type="text" value="HONOURS (IN COURSE)">
-                <label style="white-space:nowrap;">রক্তের গ্রুপ:</label>
-                <select style="width:80px; font-weight:bold;">
-                    <option>B+</option>
-                    <option>A+</option>
-                    <option>A-</option>
-                    <option>B-</option>
-                    <option>O+</option>
-                    <option>O-</option>
-                    <option>AB+</option>
-                    <option>AB-</option>
-                </select>
+        <div class="form-row">
+            <div class="form-label">৯। জাতীয়তা</div>
+            <div class="form-input-field">
+                <span class="field-sep">:</span>
+                <div class="inline-flex-group">
+                    <input type="text" value="বাংলাদেশী">
+                    <label>পেশা:</label><input type="text" value="গ্রাফিক ডিজাইনার">
+                    <label>ধর্ম:</label><input type="text" value="ইসলাম" style="min-width:70px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">১০। জাতীয় পরিচয় পত্র নং</div>
+            <div class="form-input-field">
+                <span class="field-sep">:</span>
+                <div class="inline-flex-group">
+                    <input type="text" value="৭৩৫৮১৮৫৭৫২">
+                    <label>পাসপোর্ট নং:</label><input type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-label">১১। শিক্ষাগত যোগ্যতা</div>
+            <div class="form-input-field">
+                <span class="field-sep">:</span>
+                <div class="inline-flex-group">
+                    <input type="text" value="HONOURS (IN COURSE)">
+                    <label>রক্তের গ্রুপ:</label>
+                    <select style="width:90px; font-weight:bold;">
+                        <option>B+</option> <option>A+</option> <option>A-</option> <option>B-</option>
+                        <option>O+</option> <option>O-</option> <option>AB+</option> <option>AB-</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -314,46 +164,48 @@
             </div>
         </div>
 
-        <table class="nominee-table" id="nomineeTable">
-            <thead>
-                <tr>
-                    <th style="width: 5%">নং</th>
-                    <th style="width: 22%">নাম</th>
-                    <th style="width: 18%">পিতার নাম</th>
-                    <th style="width: 18%">মাতার নাম</th>
-                    <th style="width: 15%">জন্ম তারিখ</th>
-                    <th style="width: 12%">সম্পর্ক</th>
-                    <th style="width: 10%">অংশ (%)</th>
-                    <th class="actions-panel-cell" style="width: 5%">অ্যাকশন</th>
-                </tr>
-            </thead>
-            <tbody id="nomineeTableBody">
-                <tr>
-                    <td>১</td>
-                    <td><input type="text" value="আলী ওসমান তাহমিদ"></td>
-                    <td><input type="text" value="মোহাম্মদ জাকির হোসেন"></td>
-                    <td><input type="text" value="উম্মে কুলসুম শিকদার"></td>
-                    <td><input type="text" value="১৬/১২/২০১৮"></td>
-                    <td><input type="text" value="ভাতিজা"></td>
-                    <td><input type="number" class="share-input" value="50" min="1" max="100"></td>
-                    <td><button type="button" class="btn btn-danger" onclick="deleteRow(this, 0)">মুছুন</button></td>
-                </tr>
-                <tr>
-                    <td>২</td>
-                    <td><input type="text" value="মোহাম্মদ জাকির হোসেন"></td>
-                    <td><input type="text" value="মোহাম্মদ রুহুল আমিন"></td>
-                    <td><input type="text" value="রেহানা বেগম"></td>
-                    <td><input type="text" value="২০/০৭/১৯৯০"></td>
-                    <td><input type="text" value="ভাই"></td>
-                    <td><input type="number" class="share-input" value="50" min="1" max="100"></td>
-                    <td><button type="button" class="btn btn-danger" onclick="deleteRow(this, 1)">মুছুন</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="nominee-table" id="nomineeTable">
+                <thead>
+                    <tr>
+                        <th style="width: 5%">নং</th>
+                        <th style="width: 22%">নাম</th>
+                        <th style="width: 18%">পিতার নাম</th>
+                        <th style="width: 18%">মাতার নাম</th>
+                        <th style="width: 15%">জন্ম তারিখ</th>
+                        <th style="width: 12%">সম্পর্ক</th>
+                        <th style="width: 10%">অংশ (%)</th>
+                        <th class="actions-panel-cell" style="width: 5%">অ্যাকশন</th>
+                    </tr>
+                </thead>
+                <tbody id="nomineeTableBody">
+                    <tr>
+                        <td>১</td>
+                        <td><input type="text" value="আলী ওসমান তাহমিদ"></td>
+                        <td><input type="text" value="মোহাম্মদ জাকির হোসেন"></td>
+                        <td><input type="text" value="উম্মে কুলসুম শিকদার"></td>
+                        <td><input type="text" value="১৬/১২/২০১৮"></td>
+                        <td><input type="text" value="ভাতিজা"></td>
+                        <td><input type="number" class="share-input" value="50" min="1" max="100"></td>
+                        <td class="actions-panel-cell"><button type="button" class="btn btn-danger" onclick="deleteRow(this, 0)">মুছুন</button></td>
+                    </tr>
+                    <tr>
+                        <td>২</td>
+                        <td><input type="text" value="মোহাম্মদ জাকির হোসেন"></td>
+                        <td><input type="text" value="মোহাম্মদ রুহুল আমিন"></td>
+                        <td><input type="text" value="রেহানা বেগম"></td>
+                        <td><input type="text" value="২০/০৭/১৯৯০"></td>
+                        <td><input type="text" value="ভাই"></td>
+                        <td><input type="number" class="share-input" value="50" min="1" max="100"></td>
+                        <td class="actions-panel-cell"><button type="button" class="btn btn-danger" onclick="deleteRow(this, 1)">মুছুন</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         
-        <button type="button" class="btn" onclick="addNomineeRow()">+ নতুন নমিনী যোগ করুন</button>
+        <button type="button" class="btn" style="margin-bottom:20px;" onclick="addNomineeRow()">+ নতুন নমিনী যোগ করুন</button>
 
-        <div style="text-align: center; margin: 30px 0 10px 0;">
+        <div style="text-align: center; margin: 20px 0 10px 0;">
             <span style="background-color: #000; color: #fff; padding: 4px 15px; font-weight: bold; font-size: 14px;">অঙ্গীকারনামা</span>
         </div>
         
@@ -363,22 +215,20 @@
 			<label for="vehicle1"><a href="terms_and_conditions.html" target="_blank"> শর্তাবলী</a></label>
         </div>
 
-        <table class="signature-table">
-            <tr>
-                <td>
-                    <div class="sig-line"></div>
-                    আবেদনকারীর স্বাক্ষর
-                </td>
-                <td>
-                    <div class="sig-line"></div>
-                    সাধারণ সম্পাদকের সিল ও স্বাক্ষর
-                </td>
-                <td>
-                    <div class="sig-line"></div>
-                    সভাপতির সিল ও স্বাক্ষর
-                </td>
-            </tr>
-        </table>
+        <div class="signature-container">
+            <div class="sig-block">
+                <div class="sig-line"></div>
+                আবেদনকারীর স্বাক্ষর
+            </div>
+            <div class="sig-block">
+                <div class="sig-line"></div>
+                সাধারণ সম্পাদকের সিল ও স্বাক্ষর
+            </div>
+            <div class="sig-block">
+                <div class="sig-line"></div>
+                সভাপতির সিল ও স্বাক্ষর
+            </div>
+        </div>
     </div>
 
     <div class="actions-panel">
@@ -387,107 +237,6 @@
     </div>
 </form>
 
-<script>
-    let nomineeCount = 2;
-
-    // Image Upload Real-time Preview feature
-    function previewImage(input, previewId) {
-        const file = input.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = document.getElementById(previewId);
-                const span = input.parentElement.querySelector('span');
-                img.src = e.target.result;
-                img.style.display = 'block';
-                if(span) span.style.display = 'none';
-            }
-            reader.readAsDataURL(file);
-        }
-    }
-
-    // Dynamic addition of operational elements
-    function addNomineeRow() {
-        nomineeCount++;
-        const index = nomineeCount - 1;
-        
-        // 1. Add table row entries
-        const tbody = document.getElementById('nomineeTableBody');
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${nomineeCount}</td>
-            <td><input type="text" placeholder="নাম"></td>
-            <td><input type="text" placeholder="পিতার নাম"></td>
-            <td><input type="text" placeholder="মাতার নাম"></td>
-            <td><input type="text" placeholder="দিন/মাস/বছর"></td>
-            <td><input type="text" placeholder="সম্পর্ক"></td>
-            <td><input type="number" class="share-input" value="0" min="1" max="100"></td>
-            <td><button type="button" class="btn btn-danger" onclick="deleteRow(this, ${index})">মুছুন</button></td>
-        `;
-        tbody.appendChild(tr);
-
-        // 2. Add structural Photo Slot concurrently
-        const photoContainer = document.getElementById('nomineePhotoContainer');
-        const pBox = document.createElement('div');
-        pBox.className = 'photo-box-wrapper';
-        pBox.id = `p-box-${index}`;
-        pBox.innerHTML = `
-            <span>নমিনী ${nomineeCount} ফটো</span>
-            <img id="nomImg-${index}">
-            <input type="file" accept="image/*" onchange="previewImage(this, 'nomImg-${index}')">
-        `;
-        photoContainer.appendChild(pBox);
-        reindexRows();
-    }
-
-    // Row deletion configuration
-    function deleteRow(btn, index) {
-        const row = btn.closest('tr');
-        row.remove();
-        
-        const pBox = document.getElementById(`p-box-${index}`);
-        if(pBox) pBox.remove();
-        
-        reindexRows();
-    }
-
-    // Re-indexing sequence counters to adjust dynamic layouts smoothly
-    function reindexRows() {
-        const rows = document.querySelectorAll('#nomineeTableBody tr');
-        nomineeCount = rows.length;
-        
-        rows.forEach((row, i) => {
-            row.cells[0].innerText = (i + 1);
-            // Re-sync label tags inside photo blocks safely 
-            const existingPBox = document.querySelectorAll('#nomineePhotoContainer .photo-box-wrapper')[i];
-            if(existingPBox && existingPBox.querySelector('span')) {
-                const imgVisible = existingPBox.querySelector('img').style.display === 'block';
-                if(!imgVisible) {
-                    existingPBox.querySelector('span').innerText = `নমিনী ${i + 1} ফটো`;
-                }
-            }
-        });
-    }
-
-    // Total share volume assertion handling logic
-    function validateForm(e) {
-        e.preventDefault();
-        const shareInputs = document.querySelectorAll('.share-input');
-        let totalShare = 0;
-        
-        shareInputs.forEach(input => {
-            totalShare += parseFloat(input.value || 0);
-        });
-
-        if (totalShare !== 100) {
-            alert(`ভুল হিসাব! নমিনীদের মোট অংশের পরিমাণ ১০০% হতে হবে। আপনার বর্তমান ইনপুট মোট: ${totalShare}%`);
-            return false;
-        }
-
-        alert("সফলভাবে ফর্ম যাচাই করা হয়েছে! আপনার ডাটাবেজ প্রসেসিং এর জন্য প্রস্তুত।");
-        return true;
-    }
-</script>
-
+<script src="js/script.js"></script>
 </body>
 </html>
